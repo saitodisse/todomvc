@@ -1,0 +1,15 @@
+{
+  "main": "./js/app.js",
+  "browser": {
+    "jquery": "./bower_components/jquery/jquery.js"
+  },
+  "browserify-shim": {
+    "jquery": "$"
+  },
+  "browserify": {
+    "transform": [ "browserify-shim" ]
+  },
+  "dependencies": {
+    "browserify-shim": "~3.0.0"
+  }
+}

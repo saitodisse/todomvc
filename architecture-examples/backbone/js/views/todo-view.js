@@ -28,6 +28,8 @@ var app = app || {};
 		// a one-to-one correspondence between a **Todo** and a **TodoView** in this
 		// app, we set a direct reference on the model for convenience.
 		initialize: function () {
+    __LOG("TodoView.initialize");
+
 			this.listenTo(this.model, 'change', this.render);
 			this.listenTo(this.model, 'destroy', this.remove);
 			this.listenTo(this.model, 'visible', this.toggleVisible);
@@ -35,6 +37,8 @@ var app = app || {};
 
 		// Re-render the titles of the todo item.
 		render: function () {
+    __LOG("TodoView.render");
+
 			this.$el.html(this.template(this.model.toJSON()));
 			this.$el.toggleClass('completed', this.model.get('completed'));
 			this.toggleVisible();
@@ -43,10 +47,14 @@ var app = app || {};
 		},
 
 		toggleVisible: function () {
+    __LOG("TodoView.toggleVisible");
+
 			this.$el.toggleClass('hidden', this.isHidden());
 		},
 
 		isHidden: function () {
+    __LOG("TodoView.isHidden");
+
 			var isCompleted = this.model.get('completed');
 			return (// hidden cases only
 				(!isCompleted && app.TodoFilter === 'completed') ||
@@ -56,17 +64,23 @@ var app = app || {};
 
 		// Toggle the `"completed"` state of the model.
 		toggleCompleted: function () {
+    __LOG("TodoView.toggleCompleted");
+
 			this.model.toggle();
 		},
 
 		// Switch this view into `"editing"` mode, displaying the input field.
 		edit: function () {
+    __LOG("TodoView.edit");
+
 			this.$el.addClass('editing');
 			this.$input.focus();
 		},
 
 		// Close the `"editing"` mode, saving changes to the todo.
 		close: function () {
+    __LOG("TodoView.close");
+
 			var value = this.$input.val();
 			var trimmedValue = value.trim();
 
@@ -88,6 +102,8 @@ var app = app || {};
 
 		// If you hit `enter`, we're through editing the item.
 		updateOnEnter: function (e) {
+    __LOG("TodoView.updateOnEnter");
+
 			if (e.which === ENTER_KEY) {
 				this.close();
 			}
@@ -95,6 +111,8 @@ var app = app || {};
 
 		// Remove the item, destroy the model from *localStorage* and delete its view.
 		clear: function () {
+    __LOG("TodoView.clear");
+
 			this.model.destroy();
 		}
 	});

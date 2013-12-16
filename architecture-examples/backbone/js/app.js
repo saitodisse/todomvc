@@ -1,11 +1,16 @@
 /*global $ */
 /*jshint unused:false */
-var app = app || {};
-var ENTER_KEY = 13;
 
-$(function () {
-	'use strict';
+(function(global){
+  'use strict';
 
-	// kick things off by creating the `App`
-	new app.AppView();
-});
+  var app = global.app || {};
+  global.ENTER_KEY = 13;
+
+  $(function () {
+    // kick things off by creating the `App`
+    __LOG("new app.AppView()");
+    new app.AppView();
+  });
+
+})(window);

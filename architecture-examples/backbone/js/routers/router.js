@@ -12,6 +12,11 @@ var app = app || {};
 		},
 
 		setFilter: function (param) {
+		  __LOG({ functionName: "    Router.setFilter"
+		      , backboneType: "vendor"
+		      , arguments: arguments
+		      });
+
 			// Set the current filter to be used
 			app.TodoFilter = param || '';
 
